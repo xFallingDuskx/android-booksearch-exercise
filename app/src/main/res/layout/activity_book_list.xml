@@ -1,12 +1,22 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="vertical"
+  tools:context=".activities.BookListActivity">
+
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar_list_activity"
+    app:titleTextColor="@android:color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.BookListActivity">
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimaryDark"
+    android:minHeight="?attr/actionBarSize" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBooks"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rvBooks"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
 
-</RelativeLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
