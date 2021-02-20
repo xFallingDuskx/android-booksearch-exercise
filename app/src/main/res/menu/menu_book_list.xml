@@ -3,11 +3,4 @@
   xmlns:tools="http://schemas.android.com/tools"
   tools:context=".BookSearchActivity">
 
-  <item android:id="@+id/action_search"
-    android:orderInCategory="5"
-    android:title="@string/search"
-    android:icon="@android:drawable/ic_menu_search"
-    app:showAsAction="always|collapseActionView"
-    app:actionViewClass="androidx.appcompat.widget.SearchView" />
-
 </menu>

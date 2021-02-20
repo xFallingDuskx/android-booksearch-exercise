@@ -7,9 +7,14 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
+import com.bumptech.glide.Glide;
 import com.codepath.android.booksearch.R;
+import com.codepath.android.booksearch.models.Book;
+import org.parceler.Parcels;
 
 public class BookDetailActivity extends AppCompatActivity {
+
     private ImageView ivBookCover;
     private TextView tvTitle;
     private TextView tvAuthor;
@@ -18,14 +23,24 @@ public class BookDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
+
+        // add toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar_detail_activity);
+        setSupportActionBar(toolbar);
+
         // Fetch views
         ivBookCover = (ImageView) findViewById(R.id.ivBookCover);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvAuthor = (TextView) findViewById(R.id.tvAuthor);
 
         // Extract book object from intent extras
+        Book book = Parcels.unwrap(getIntent().getParcelableExtra("book"));
 
         // Use book object to populate data into views
+        Glide.with(this).load(book.getCoverUrl()).into(ivBookCover);
+        tvTitle.setText(book.getTitle());
+        tvAuthor.setText(book.getAuthor());
+        getSupportActionBar().setTitle(book.getTitle());
     }
 
 

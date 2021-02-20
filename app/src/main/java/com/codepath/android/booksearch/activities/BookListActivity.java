@@ -1,5 +1,6 @@
 package com.codepath.android.booksearch.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -27,6 +28,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 import okhttp3.Headers;
+import org.parceler.Parcels;
 
 
 public class BookListActivity extends AppCompatActivity {
@@ -52,15 +54,14 @@ public class BookListActivity extends AppCompatActivity {
         bookAdapter.setOnItemClickListener(new BookAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
-                Toast.makeText(
-                        BookListActivity.this,
-                        "An item at position " + position + " clicked!",
-                        Toast.LENGTH_SHORT).show();
-
                 // Handle item click here:
                 // Create Intent to start BookDetailActivity
+                Intent intent = new Intent(BookListActivity.this, BookDetailActivity.class);
                 // Get Book at the given position
+                Book book = abooks.get(position);
                 // Pass the book into details activity using extras
+                intent.putExtra("book", Parcels.wrap(book));
+                startActivity(intent);
             }
         });
 
