@@ -5,9 +5,12 @@ import android.text.TextUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 
+// Make the class Parceable with the @Parcel
+@Parcel
 public class Book {
     private String openLibraryId;
     private String author;

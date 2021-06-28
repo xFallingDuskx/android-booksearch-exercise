@@ -27,6 +27,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,7 @@ public class BookListActivity extends AppCompatActivity {
     private BookAdapter bookAdapter;
     private BookClient client;
     private ArrayList<Book> abooks;
+    private Book book;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,8 @@ public class BookListActivity extends AppCompatActivity {
 
                 // Handle item click here:
                 if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
-                    Book theBook = abooks.get(position);
+                    // Get Book at the given position (required below)
+                    book = abooks.get(position);
                     // We can access the data within the views
                     TextView tvTitle = itemView.findViewById(R.id.tvTitle);
                     Toast.makeText(BookListActivity.this,
@@ -69,12 +72,14 @@ public class BookListActivity extends AppCompatActivity {
 
                 // Create Intent to start BookDetailActivity
                 Intent i = new Intent(BookListActivity.this, BookDetailActivity.class);
-                startActivity(i);
 
-                // Get Book at the given position
-
+                // Get Book at the given position - Already gotten
 
                 // Pass the book into details activity using extras
+                i.putExtra("book", Parcels.wrap(book));
+
+                // Start activity
+                startActivity(i);
             }
         });
 
