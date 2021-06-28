@@ -1,5 +1,6 @@
 package com.codepath.android.booksearch.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -67,7 +68,12 @@ public class BookListActivity extends AppCompatActivity {
                 }
 
                 // Create Intent to start BookDetailActivity
+                Intent i = new Intent(BookListActivity.this, BookDetailActivity.class);
+                startActivity(i);
+
                 // Get Book at the given position
+
+
                 // Pass the book into details activity using extras
             }
         });
