@@ -1,6 +1,8 @@
 package com.codepath.android.booksearch.activities;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,6 +41,10 @@ public class BookDetailActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(book.getCoverUrl())
                 .into(ivBookCover);
+
+        // Changing ActionBar title to reflect the book title
+        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
+        getSupportActionBar().setTitle(book.getTitle()); // set the top title
     }
 
 
