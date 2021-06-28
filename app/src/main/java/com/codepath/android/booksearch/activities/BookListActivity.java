@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,12 +51,21 @@ public class BookListActivity extends AppCompatActivity {
         bookAdapter.setOnItemClickListener(new BookAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
-                Toast.makeText(
-                        BookListActivity.this,
-                        "An item at position " + position + " clicked!",
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(
+//                        BookListActivity.this,
+//                        "An item at position " + position + " clicked!",
+//                        Toast.LENGTH_SHORT).show();
 
                 // Handle item click here:
+                if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
+                    Book theBook = abooks.get(position);
+                    // We can access the data within the views
+                    TextView tvTitle = itemView.findViewById(R.id.tvTitle);
+                    Toast.makeText(BookListActivity.this,
+                            tvTitle.getText(),
+                            Toast.LENGTH_SHORT).show();
+                }
+
                 // Create Intent to start BookDetailActivity
                 // Get Book at the given position
                 // Pass the book into details activity using extras
